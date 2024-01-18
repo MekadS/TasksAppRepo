@@ -22,7 +22,7 @@ class CreateTaskRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|string|max:32'
+            'name' => 'required|string|max:32',
         ];
     }
 }

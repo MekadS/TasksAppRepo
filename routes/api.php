@@ -20,9 +20,14 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::controller(TaskController::class)->group(function () {
-    Route::get('/task', 'index')->name('task.index');
-    Route::post('/task', 'store')->name('task.store');
-    Route::put('/task/{task}', 'update')->name('task.update');
+    Route::get('/task', 'index')->name('task.index');               //show all available tasks
+    Route::get('/task/{id}', 'show')->name('task.show');            //search for a task
+
+    Route::get('/task/searchTask/{name}', 'searchTask')->name('task.show'); //search for a task by name
+
+    Route::post('/task', 'store')->name('task.store');              //create new task
+    Route::put('/task/{task}', 'update')->name('task.update');      //update the task description
+    Route::put('/task/{task}/toggleStatus', 'updateStatus')->name('task.updateStatus');     //toggle the task status
     Route::delete('/task/{task}', 'destroy')->name('task.destroy');
 });
 
